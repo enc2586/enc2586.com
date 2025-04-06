@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "github": "GitHub",
+    "email": {
+      "send": "Send Email",
+      "copy": "Copy Email"
+    },
+    "blog": "Blog",
+    "theme": {
+      "dark": "Dark Mode",
+      "light": "Light Mode"
+    }
+  },
+  "hero": {
+    "title": "I'm a Developer, Entrepreneur, and Learner",
+    "description": "I'm Hongje Choi, a Full-Stack developer and a student at Gwangju Institute of Science and Technology. I'm also the founder of 'Kongtek'- a private company that provides student management services.",
+    "explore": "Explore More"
+  }
+}
