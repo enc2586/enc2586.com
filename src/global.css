@@ -3,8 +3,7 @@
   font-display: swap;
   src:
     local("Pretendard Variable"),
-    url("/fonts/pretendard-variable-dynamic-subset.woff2")
-      format("woff2-variations");
+    url("/fonts/pretendard-variable.woff2") format("woff2-variations");
   font-weight: 45 920;
   font-style: normal;
 }
