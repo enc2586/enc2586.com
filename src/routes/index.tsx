@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Navbar } from "../components/common/Navbar";
 import { useTranslation } from "react-i18next";
+import { ProjectCard } from "../components/common/ProjectCard";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -82,20 +83,23 @@ const ProjectsSection = () => {
         Projects
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="rounded-lg border border-neutral-200 bg-white p-6 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
-          >
-            <div className="h-48 w-full rounded-lg bg-neutral-200 dark:bg-neutral-800" />
-            <h3 className="mt-4 text-xl font-semibold text-slate-700 dark:text-slate-300">
-              Project {i}
-            </h3>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-              Project description will go here.
-            </p>
-          </div>
-        ))}
+        <ProjectCard
+          title="학생관리시스템"
+          description="Project description will go here."
+          image="/placeholder-1.jpg"
+          href="/projects/student-management-system"
+        />
+        <ProjectCard
+          title="Project 2"
+          description="Project description will go here."
+          image="/placeholder-2.jpg"
+        />
+        <ProjectCard
+          title="Project 3"
+          description="Project description will go here."
+          image="/placeholder-3.jpg"
+          href="https://example.com"
+        />
       </div>
     </motion.div>
   );
