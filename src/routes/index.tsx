@@ -140,7 +140,7 @@ const AwardsSection = () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <ProjectCard
           title="대통령과학장학생"
-          description="전국 우수 이공계 대학생 120명을 선발하는 대통령과학장학생으로 선정되었습니다."
+          description="전국 우수 이공계 대학생 60명을 선발하는 대통령과학장학생으로 선정되었습니다."
           image="/awards/president-scholar.jpg"
           href="https://www.news1.kr/local/sejong-chungbuk/5487906"
         />
