@@ -16,5 +16,22 @@
     "title_2": "by Engineering Code",
     "description": "I am an undergraduate student in EECS at GIST and a freelance web developer specializing in Full-Stack custom web services.",
     "explore": "Explore More"
+  },
+  "projects": {
+    "title": "Projects",
+    "sms": {
+      "title": "Student Management System",
+      "description": "A comprehensive student management system for schools, including self-study, attendance, and life guidance."
+    },
+    "guide-me": {
+      "title": "Guide-Me",
+      "description": "An AI service that recommends a schedule for the next semester based on the student's major and courses taken."
+    }
+  },
+  "awards": {
+    "title": "Awards"
+  },
+  "skills": {
+    "title": "Skills"
   }
 }
