@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 
@@ -5,22 +6,31 @@ interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
+  to?: string;
   href?: string;
   bottomElements?: ReactNode;
+  isInDevelopment?: boolean;
 }
 
 export const ProjectCard = ({
   title,
   description,
   image,
+  to,
   href,
   bottomElements,
+  isInDevelopment = false,
 }: ProjectCardProps) => {
   const cardContent = (
     <motion.div
-      whileHover={href ? { y: -5 } : {}}
-      className="h-full rounded-lg border border-neutral-200 bg-white p-6 shadow-md transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900"
+      whileHover={to || href ? { y: -5 } : {}}
+      className="relative h-full rounded-lg border border-neutral-200 bg-white p-6 shadow-md transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900"
     >
+      {isInDevelopment && (
+        <div className="absolute right-4 top-4 z-10 rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+          개발중
+        </div>
+      )}
       <div className="h-48 w-full overflow-hidden rounded-lg">
         {image ? (
           <img src={image} alt={title} className="h-full w-full object-cover" />
@@ -38,14 +48,17 @@ export const ProjectCard = ({
     </motion.div>
   );
 
+  if (to) {
+    return (
+      <Link to={to} className="block h-full">
+        {cardContent}
+      </Link>
+    );
+  }
+
   if (href) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full"
-      >
+      <a href={href} className="block h-full" target="_blank">
         {cardContent}
       </a>
     );
