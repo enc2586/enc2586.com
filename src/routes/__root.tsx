@@ -1,11 +1,11 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
-import { GlobalHeader } from "../components/common/GlobalHeader";
+import { Navigation } from "../components/common/Navigation";
 
 export const Route = createRootRoute({
   component: () => (
     <>
-      <GlobalHeader />
-      <main className="pt-16">
+      <Navigation />
+      <main className="min-h-screen bg-background pt-16">
         <Outlet />
       </main>
     </>

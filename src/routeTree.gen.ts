@@ -11,14 +11,43 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ProjectImport } from './routes/project'
+import { Route as LinksImport } from './routes/links'
+import { Route as ExperienceImport } from './routes/experience'
 import { Route as IndexImport } from './routes/index'
+import { Route as ProjectsIndexImport } from './routes/projects/index'
 import { Route as ProjectsStudentManagementSystemImport } from './routes/projects/student-management-system'
+import { Route as ProjectsProjectIdImport } from './routes/projects/$projectId'
 
 // Create/Update Routes
+
+const ProjectRoute = ProjectImport.update({
+  id: '/project',
+  path: '/project',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LinksRoute = LinksImport.update({
+  id: '/links',
+  path: '/links',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ExperienceRoute = ExperienceImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProjectsIndexRoute = ProjectsIndexImport.update({
+  id: '/projects/',
+  path: '/projects/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -28,6 +57,12 @@ const ProjectsStudentManagementSystemRoute =
     path: '/projects/student-management-system',
     getParentRoute: () => rootRoute,
   } as any)
+
+const ProjectsProjectIdRoute = ProjectsProjectIdImport.update({
+  id: '/projects/$projectId',
+  path: '/projects/$projectId',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -40,11 +75,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceImport
+      parentRoute: typeof rootRoute
+    }
+    '/links': {
+      id: '/links'
+      path: '/links'
+      fullPath: '/links'
+      preLoaderRoute: typeof LinksImport
+      parentRoute: typeof rootRoute
+    }
+    '/project': {
+      id: '/project'
+      path: '/project'
+      fullPath: '/project'
+      preLoaderRoute: typeof ProjectImport
+      parentRoute: typeof rootRoute
+    }
+    '/projects/$projectId': {
+      id: '/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof ProjectsProjectIdImport
+      parentRoute: typeof rootRoute
+    }
     '/projects/student-management-system': {
       id: '/projects/student-management-system'
       path: '/projects/student-management-system'
       fullPath: '/projects/student-management-system'
       preLoaderRoute: typeof ProjectsStudentManagementSystemImport
+      parentRoute: typeof rootRoute
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -54,37 +124,84 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/links': typeof LinksRoute
+  '/project': typeof ProjectRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/student-management-system': typeof ProjectsStudentManagementSystemRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/links': typeof LinksRoute
+  '/project': typeof ProjectRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/student-management-system': typeof ProjectsStudentManagementSystemRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/links': typeof LinksRoute
+  '/project': typeof ProjectRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/student-management-system': typeof ProjectsStudentManagementSystemRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects/student-management-system'
+  fullPaths:
+    | '/'
+    | '/experience'
+    | '/links'
+    | '/project'
+    | '/projects/$projectId'
+    | '/projects/student-management-system'
+    | '/projects'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects/student-management-system'
-  id: '__root__' | '/' | '/projects/student-management-system'
+  to:
+    | '/'
+    | '/experience'
+    | '/links'
+    | '/project'
+    | '/projects/$projectId'
+    | '/projects/student-management-system'
+    | '/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/experience'
+    | '/links'
+    | '/project'
+    | '/projects/$projectId'
+    | '/projects/student-management-system'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExperienceRoute: typeof ExperienceRoute
+  LinksRoute: typeof LinksRoute
+  ProjectRoute: typeof ProjectRoute
+  ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   ProjectsStudentManagementSystemRoute: typeof ProjectsStudentManagementSystemRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExperienceRoute: ExperienceRoute,
+  LinksRoute: LinksRoute,
+  ProjectRoute: ProjectRoute,
+  ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   ProjectsStudentManagementSystemRoute: ProjectsStudentManagementSystemRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -98,14 +215,34 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/projects/student-management-system"
+        "/experience",
+        "/links",
+        "/project",
+        "/projects/$projectId",
+        "/projects/student-management-system",
+        "/projects/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/experience": {
+      "filePath": "experience.tsx"
+    },
+    "/links": {
+      "filePath": "links.tsx"
+    },
+    "/project": {
+      "filePath": "project.tsx"
+    },
+    "/projects/$projectId": {
+      "filePath": "projects/$projectId.tsx"
+    },
     "/projects/student-management-system": {
       "filePath": "projects/student-management-system.tsx"
+    },
+    "/projects/": {
+      "filePath": "projects/index.tsx"
     }
   }
 }
