@@ -21,6 +21,8 @@
 
 :root {
   --radius: 0.75rem;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  color-scheme: dark;
 
   /* CLAUDE.md 디자인 시스템 - 다크 모드 */
   --background: #0a0a0a;
@@ -88,23 +90,40 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* 라이트 모드 색상 (선택사항 - 다크 모드만 사용 시 불필요) */
-@media (prefers-color-scheme: light) {
-  :root:not(.dark) {
-    --background: #ffffff;
-    --foreground: #000000;
-    --card: rgba(244, 244, 245, 0.5); /* zinc-100/50 */
-    --card-foreground: #000000;
-    --muted-foreground: rgba(0, 0, 0, 0.7);
-    --border: rgba(228, 228, 231, 1); /* zinc-200 */
-  }
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply min-w-80 bg-background text-foreground antialiased;
+    background-image: radial-gradient(
+      circle at 50% -20%,
+      rgba(59, 130, 246, 0.1),
+      transparent 34rem
+    );
+    background-repeat: no-repeat;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgba(59, 130, 246, 0.35);
+    color: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

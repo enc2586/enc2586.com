@@ -6,6 +6,7 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/links")({
   component: LinksPage,
@@ -56,19 +57,22 @@ const devLinks: LinkItem[] = [
 
 function LinksPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-24">
+    <div className="mx-auto max-w-5xl px-6 pb-24 pt-28 sm:pt-32">
       {/* 페이지 헤더 */}
-      <div className="mb-16 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">링크</h1>
-        <p className="text-lg text-zinc-400">
+      <div className="mb-14 text-center">
+        <Badge variant="secondary" className="mb-4 rounded-full">
+          Connect
+        </Badge>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">링크</h1>
+        <p className="mt-4 text-lg text-muted-foreground">
           다양한 플랫폼에서 저를 찾아보세요
         </p>
       </div>
 
       {/* 연락처 섹션 */}
       <section className="mb-16">
-        <h2 className="mb-6 text-2xl font-bold text-white">연락</h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <h2 className="mb-6 text-2xl font-bold">연락</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {contactLinks.map((link) => (
             <LinkCard key={link.name} link={link} />
           ))}
@@ -77,8 +81,8 @@ function LinksPage() {
 
       {/* 개발 플랫폼 섹션 */}
       <section>
-        <h2 className="mb-6 text-2xl font-bold text-white">개발</h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <h2 className="mb-6 text-2xl font-bold">개발</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {devLinks.map((link) => (
             <LinkCard key={link.name} link={link} />
           ))}
@@ -94,24 +98,27 @@ function LinkCard({ link }: { link: LinkItem }) {
   return (
     <a
       href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block"
+      target={link.url.startsWith("http") ? "_blank" : undefined}
+      rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
+      className="group block rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+      aria-label={`${link.name}: ${link.username}`}
     >
-      <Card className="h-full border-zinc-800 bg-zinc-900/50 transition-all hover:-translate-y-1 hover:border-zinc-700 hover:shadow-xl">
+      <Card className="h-full border-zinc-800/90 bg-zinc-900/45 transition-[border-color,box-shadow,transform] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/30 group-hover:shadow-xl group-active:scale-[0.99]">
         <CardContent className="flex flex-col items-center justify-center space-y-3 p-6 text-center">
           {/* 아이콘 */}
           <div
             className={`rounded-lg bg-zinc-800 p-3 transition-colors group-hover:bg-zinc-700 ${link.color}`}
           >
-            <Icon className="size-8" />
+            <Icon className="size-8" aria-hidden="true" />
           </div>
 
           {/* 플랫폼 이름 */}
-          <h3 className="font-bold text-white">{link.name}</h3>
+          <h3 className="font-bold">{link.name}</h3>
 
           {/* 사용자명 */}
-          <p className="text-sm text-zinc-400">{link.username}</p>
+          <p className="max-w-full break-words text-sm text-zinc-400">
+            {link.username}
+          </p>
 
           {/* 추가 정보 */}
           {link.description && (

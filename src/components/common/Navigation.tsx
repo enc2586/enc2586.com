@@ -1,36 +1,39 @@
 import { Button } from "@/components/ui/button";
-import { Github, BookOpen } from "lucide-react";
+import { BookOpen, Github } from "lucide-react";
 import { Logo } from "./navbar/Logo";
 import { NavMenu } from "./navbar/NavMenu";
 import { NavigationSheet } from "./navbar/NavigationSheet";
 
 export function Navigation() {
   return (
-    <nav className="fixed z-50 top-6 inset-x-4 h-14 bg-background border dark:border-slate-700/70 max-w-screen-md mx-auto rounded-full">
-      <div className="h-full flex items-center justify-between mx-auto px-3">
+    <nav
+      aria-label="주요 메뉴"
+      className="fixed inset-x-4 top-4 z-50 mx-auto h-14 max-w-4xl rounded-full border border-white/10 bg-background/80 shadow-lg shadow-black/20 backdrop-blur-xl"
+    >
+      <div className="mx-auto flex h-full items-center justify-between px-2.5 sm:px-3">
         <Logo />
 
-        {/* Desktop Menu */}
         <NavMenu className="hidden md:block" />
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <Button
             variant="outline"
-            className="rounded-full shadow-none"
+            className="size-10 rounded-full shadow-none"
             size="icon"
             asChild
           >
             <a
-              href="https://enc2586.tistory.com/m"
+              href="https://enc2586.tistory.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="기술 블로그, 새 창에서 열기"
             >
-              <BookOpen className="h-5! w-5!" />
+              <BookOpen className="size-4.5" aria-hidden="true" />
             </a>
           </Button>
           <Button
             variant="outline"
-            className="rounded-full shadow-none"
+            className="size-10 rounded-full shadow-none"
             size="icon"
             asChild
           >
@@ -38,12 +41,12 @@ export function Navigation() {
               href="https://github.com/enc2586"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub, 새 창에서 열기"
             >
-              <Github className="h-5! w-5!" />
+              <Github className="size-4.5" aria-hidden="true" />
             </a>
           </Button>
 
-          {/* Mobile Menu */}
           <div className="md:hidden">
             <NavigationSheet />
           </div>

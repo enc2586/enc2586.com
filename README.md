@@ -1,5 +1,12 @@
 # enc2586.com
 
-개발자 최홍제를 소개하는 사이트입니다.
+백엔드 엔지니어 최홍제의 포트폴리오 사이트입니다.
 
-현재 업데이트가 중단되었습니다. 올 여름 중 새단장하여 돌아오겠습니다.
+React, TypeScript, TanStack Router, Tailwind CSS로 구성되어 있으며 `master` 브랜치 푸시 시 연결된 CI/CD를 통해 배포됩니다.
+
+```bash
+npm ci
+npm run dev
+```
+
+프로덕션 빌드는 `npm run build`, 정적 검사는 `npm run lint`로 실행합니다.
