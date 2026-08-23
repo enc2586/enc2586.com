@@ -139,11 +139,11 @@ const Experience = () => {
       type: "achievement" as const,
     },
     {
-      title: "GIST EECS 학부생",
+      title: "GIST EECS 학부생 · 2학년 수료",
       organization: "GIST (광주과학기술원)",
       period: "2024.03 - 현재",
       description:
-        "전기전자컴퓨터공학부에서 컴퓨터의 구조와 소프트웨어에 대해 배우고 있습니다",
+        "전기전자컴퓨터공학부 2학년 과정을 수료했으며, 컴퓨터 구조와 소프트웨어를 배우고 있습니다.",
       type: "education" as const,
       technologies: ["Algorithm", "Computer Architecture"],
     },
