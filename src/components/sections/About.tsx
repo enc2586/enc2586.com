@@ -22,8 +22,7 @@ const About = () => {
               id="about-title"
               className="text-4xl font-bold tracking-tight sm:text-5xl"
             >
-              필요한 서비스를 만들고,
-              <br /> 끝까지 운영합니다.
+              「필요한」 서비스를 만듭니다
             </h2>
             <div className="mt-6 space-y-4 text-[17px] leading-8 text-muted-foreground">
               <p>

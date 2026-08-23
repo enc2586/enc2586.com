@@ -32,8 +32,7 @@ const Hero = () => {
           Backend Engineer · Product Builder
         </Badge>
         <h1 className="mt-6 text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          필요한 문제를 발견하고,
-          <br className="hidden sm:block" /> 끝까지 작동하게 만듭니다.
+          「필요한」 서비스를 만듭니다
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-8 text-muted-foreground md:text-lg">
           안녕하세요, 최홍제입니다. 학교에서 매일 쓰는 운영 서비스부터
